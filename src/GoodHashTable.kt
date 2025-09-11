@@ -14,7 +14,13 @@ class GoodHashTable(override val size: Int = 1500) : HashTable {
 	 */
 	override fun hash(key: String): Int {
 		require(HashTable.isValidKey(key)) { "Ключ не валидный" }
-		return key.sumOf { it.code * it.code } % size
+        val p = 31
+        var hash = 0
+        for (char in key){
+            hash += hash * p + char.code
+        }
+
+        return hash % size
 	}
 
 	override fun put(pair: Pair<String, String>) {
@@ -61,7 +67,7 @@ class GoodHashTable(override val size: Int = 1500) : HashTable {
 	}
 
 	override fun exportCsv(): String = buildString {
-		appendLine("index,how")
+		appendLine("index,size")
 		table.forEachIndexed { index, items ->
 			appendLine("$index,${items.size}")
 		}

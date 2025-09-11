@@ -4,7 +4,7 @@ class BadHashTable(override val size: Int = 1500) : HashTable {
 
 	override fun hash(key: String): Int {
 		require(HashTable.isValidKey(key)) { "Ключ не валидный" }
-		return ((key[1].code + key[2].code + key[3].code + key[4].code) * key[0].code) % size
+		return (((key[1].code + key[2].code + key[3].code + key[4].code + key[5].code) * (key[0].digitToInt() + 1)) % 1500 )
 	}
 
 	override fun put(pair: Pair<String, String>) {

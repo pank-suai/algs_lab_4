@@ -1,19 +1,30 @@
 import java.io.File
 
 fun main() {
-	generateRandomDataCsvFile(10000)
-	val ht: HashTable = BadHashTable()
 
-	val file = File("hashes.csv")
-	file.readLines().forEachIndexed{ i, line ->
-		if (i == 0) return@forEachIndexed
+	// generateRandomDataCsvFile(10000)
+	val badHT: HashTable = BadHashTable()
+    badHT.fillDataFromCsvFile("hashes.csv")
 
-		ht.put(line to i.toString())
-	}
 	val fileCols = File("collisions.csv")
-	fileCols.writeText(ht.exportCsv())
+	fileCols.writeText(badHT.exportCsv())
+
+    val goodHT: HashTable = GoodHashTable()
+    goodHT.fillDataFromCsvFile("hashes.csv")
+    val fileSizes = File("sizes.csv")
+    fileSizes.writeText(goodHT.exportCsv())
 }
 
+/* Заполнение хеш таблицы сгенерированными данными
+ */
+fun HashTable.fillDataFromCsvFile(filename: String){
+    val file = File(filename)
+    file.readLines().forEachIndexed{ i, line ->
+        if (i == 0) return@forEachIndexed
+
+        put(line to i.toString())
+    }
+}
 
 /**
  * Генерация случайных данных для ключей
