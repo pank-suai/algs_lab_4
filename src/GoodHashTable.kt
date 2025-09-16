@@ -6,7 +6,7 @@ import java.util.LinkedList
  * @param size - размер таблицы
  */
 class GoodHashTable(override val size: Int = 1500) : HashTable {
-	private val table = Array(size) { LinkedList<Item>() }
+    private val table = Array(size) { LinkedList<Item>() }
 
 
 	/**
