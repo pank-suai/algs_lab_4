@@ -94,10 +94,26 @@ $
 более равномерно и, следовательно, новую хеш-функцию на можно считать
 приемлемой.
 
+= Листинг программы
+
+LinearLinkedList.kt -- особая реализация одностороннего списка.
+#raw(read("../src/LinearLinkedList.kt"), lang: "kt", block: true)
+
+HashTable.kt -- интерфейс хеш-таблицы для создания различных реализаций.
+#raw(read("../src/HashTable.kt"), lang: "kt", block: true)
+
+BadHashTable.kt -- реализация хеш-таблицы с моим хешированием и без обработки коллизий.
+#raw(read("../src/BadHashTable.kt"), lang: "kt", block: true)
+
+GoodHashTable.kt -- реализация хеш-таблицы с биномиальным хешированием с открытым хешированием.
+#raw(read("../src/HashTable.kt"), lang: "kt", block: true)
+
+main.kt -- интерактивная программа для работы с хеш-таблицей.
+#raw(read("../src/HashTable.kt"), lang: "kt", block: true)
+
 
 = Скриншоты работы программы
 
 = Выводы
 
-
-
+Изучил методы хеширования данных и реализовал рабочую хеш-таблицу.
