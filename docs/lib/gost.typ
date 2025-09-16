@@ -2,7 +2,19 @@
 
 
 #let init(body) = {
-  titlepage(authors: ("В.Д. Панков",), city: "Санкт-Петербург", department: "Кафедра № ", documentName: "ОТЧЁТ ПО ЛАБОРАТОРНОЙ РАБОТЕ", education: "ГУАП", group: "М412", teachers: (), position: "")
+    titlepage(
+    authors: ("В.Д. Панков",),
+    city: "Санкт-Петербург",
+    department: "Кафедра № 43",
+    documentName: "ОТЧЁТ ПО ЛАБОРАТОРНОЙ РАБОТЕ №4",
+    education: "ГУАП",
+    group: "М412",
+    teachers: ("М.А. Мурашова",),
+    position: "старший преподаватель",
+    title: ["ХЕШИРОВАНИЕ ДАННЫХ"],
+    object: "Алгоритмы и структуры данных",
+  )
+
   
   set text(
     font: "Times New Roman",
@@ -34,9 +46,11 @@
     it
   }
 
-  set list(marker: [---], body-indent: 1em, indent: 1.25cm)
+  set list(marker: [---], body-indent: 0.7em, indent: 1.25cm)
 
-  show list: set par(hanging-indent: -2.5em)
+  show list: set par(hanging-indent: -4.7em)
+    
+  set enum(numbering: "1.", body-indent: 0.7em, indent: 1.25cm)
 
   // Ссылка на изображения (без рисунок, просто число)
   show ref: it =>{
