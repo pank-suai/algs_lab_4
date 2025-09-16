@@ -11,18 +11,27 @@ class BadHashTable(override val size: Int = 1500) : HashTable {
 		val (key, value) = pair
 		val index = hash(key)
 		if (table[index]?.key != null && table[index]?.key != key) {
-            println("Коллизия: $key c ${table[index]?.key}")
+            println("Коллизия: $key c ${table[index]?.key}. Элемент перезаписан.")
 			collisions[index]++
 		}
 		table[index] = Item(key, value)
 	}
 
-	override fun find(key: String): String? {
+	override fun findByKey(key: String): Item? {
 		val index = hash(key)
-		return table.getOrNull(index)?.value
+		return table.getOrNull(index)
 	}
 
-	override fun remove(key: String) {
+    override fun findByValue(value: String): Item? {
+        table.forEach {
+             if (it?.value == value){
+                 return  it
+             }
+        }
+        return null
+    }
+
+    override fun remove(key: String) {
 		val index = hash(key)
 		table[index] = null
 	}
@@ -32,7 +41,7 @@ class BadHashTable(override val size: Int = 1500) : HashTable {
 		buildString {
 			appendLine("{")
 			table.filterNotNull().forEach { (key, value) ->
-				println("\t$key: $value")
+				appendLine("\t$key: $value")
 			}
 			appendLine("}")
 		}

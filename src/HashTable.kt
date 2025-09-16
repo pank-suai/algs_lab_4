@@ -20,7 +20,8 @@ interface HashTable {
 
     fun hash(key: String): Int
     fun put(pair: Pair<String, String>)
-    fun find(key: String): String?
+    fun findByKey(key: String): Item?
+    fun findByValue(value: String): Item?
     fun remove(key: String)
     fun exportCsv(): String
 }
